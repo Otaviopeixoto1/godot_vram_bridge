@@ -1,31 +1,3 @@
-#!/usr/bin/env python
-
-# import pathlib
-#
-# Import("env")
-# Import("env_modules")
-#
-# tsv_base_dir = pathlib.Path(ARGUMENTS.get("TSV_BASE_DIR", ""))
-# tsv_lib_dir = tsv_base_dir / "lib"
-# tsv_include_dir = tsv_base_dir / "include"
-#
-# env.Append(LIBPATH=[f"{tsv_lib_dir}"])
-#
-# module_env = env.Clone()
-#
-# tsv_opengl = ARGUMENTS.get("TSV_OPENGL", False)
-# if tsv_opengl:
-#     module_env.Append(CPPDEFINES=["USE_OPENGL"])
-#     env.Append(LIBS=["TextureShareOpenGL", "TSVIpcMemory", "OpenGL"])
-# else:
-#     env.Append(LIBS=["TextureShareVulkan", "TSVIpcMemory"])
-#
-# print(tsv_include_dir)
-# module_env.Append(CPPPATH=[f"{tsv_include_dir}"])
-#
-# src_list = [ "register_types.cpp", "godot_texture_share.cpp", "texture_sender.cpp" ]
-# module_env.add_source_files(env.modules_sources, src_list) # Add all cpp files to the build
-
 import pathlib
 
 Import("env")

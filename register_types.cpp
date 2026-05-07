@@ -1,5 +1,4 @@
 #include "register_types.h"
-
 #include <drivers/vulkan/vulkan_context.h>
 
 void initialize_gd_module_texture_share_vk_module(ModuleInitializationLevel p_level) {

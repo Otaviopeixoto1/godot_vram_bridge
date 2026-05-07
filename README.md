@@ -1,4 +1,4 @@
-# gd\_module\_texture\_share\_vk
+# Godot VRAM Bridge Module
 
-Godot module that requests Vulkan external memory extension. Required by gd\_texture\_share\_vk GdExtension.
-
+This module sets up the extensions vulkan (possible other API in the future) for sharing resources with other APIs such as cuda. 
+This Allows for zero-copy sharing, making it possible to interact with other APIs in real time.

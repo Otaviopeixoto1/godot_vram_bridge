@@ -4,6 +4,5 @@ Import("env")
 Import("env_modules")
 
 module_env = env.Clone()
-
-src_list = [ "register_types.cpp" ]
-module_env.add_source_files(env.modules_sources, src_list) # Add all cpp files to the build
+module_env.Append(CPPPATH=["./"])
+module_env.add_source_files(env.modules_sources, "*.cpp")

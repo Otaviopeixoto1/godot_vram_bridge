@@ -9,6 +9,7 @@ class VRAMBridgeVKHooks : public Object, VulkanHooks
 	GDCLASS(VRAMBridgeVKHooks, Object);
 
 protected:
+	//TODO: These should be managed by VRAMBridge:
 	VkInstance vulkan_instance = nullptr;
 	VkPhysicalDevice vulkan_physical_device = nullptr;
 	VkDevice vulkan_device = nullptr;
@@ -60,6 +61,4 @@ private:
 	// Returns true if external buffers with the given usage flags are supported in the current physical device usage flags defaults to export buffers
 	bool _device_supports_external_buffer(VkPhysicalDevice device, VkBufferUsageFlags usage = VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_STORAGE_BUFFER_BIT);
 	bool _queue_family_supports_present(VkPhysicalDevice device, uint32_t queue_family_index);
-
-
 };

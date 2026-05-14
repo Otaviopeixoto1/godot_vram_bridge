@@ -2,7 +2,7 @@
 #include "core/templates/vector.h"
 #include "drivers/vulkan/rendering_device_driver_vulkan.h"
 
-
+#include <vulkan/vulkan_win32.h>
 
 //
 // Taken from godot 4.6: rendering_device.cpp
@@ -227,6 +227,9 @@ bool VRAMBridgeVKHooks::get_physical_device(VkPhysicalDevice *r_device)
 
 	ERR_FAIL_COND_V_MSG((device_index < 0) || (device_index >= int32_t(physical_device_count)), false, "None of the devices supports both graphics and present queues.");
 
+	VkPhysicalDeviceProperties props;
+	vkGetPhysicalDeviceProperties(vulkan_physical_device, &props);
+
 	vulkan_physical_device = physical_devices[device_index];
 	*r_device = vulkan_physical_device;
 	return true;
@@ -261,7 +264,6 @@ bool VRAMBridgeVKHooks::create_vulkan_device(const VkDeviceCreateInfo *p_device_
 	createInfo.ppEnabledExtensionNames = enabled_extension_names.ptr();
 
 	VkResult vk_result = vkCreateDevice(vulkan_physical_device, &createInfo, VKC::get_allocation_callbacks(VK_OBJECT_TYPE_DEVICE), &vulkan_device);
-
 	if (vk_result != VK_SUCCESS)
 	{
 		print_line("VRAMBridgeVKHooks: Failed to create Vulkan device [Vulkan error", vk_result, "]");
@@ -271,7 +273,7 @@ bool VRAMBridgeVKHooks::create_vulkan_device(const VkDeviceCreateInfo *p_device_
 	*r_device = vulkan_device;
 
 	//
-	// Initialize a custom allocator...
+	// TODO: VMA Support for External memory on windows only comes in v3.2.0 and godot currently uses 3.1.0 ...
 	//
 
 	return true;
